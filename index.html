@@ -1,138 +1,393 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SRK HatchPro Solutions | Eggs, Chicks & Machinery Services</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SRK HatchPro Solutions — Eggs, Chicks & Hatchery Machinery</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- AOS for scroll animations -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
   <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f8fafc;
-      color: #333;
+    :root{
+      --accent:#ffbf00; /* warm yellow */
+      --dark:#222;
+      --muted:#6b7280;
+      --bg:#f7fbfa;
+      --card:#ffffff;
     }
-    header {
-      background-color: #ffcc00;
-      color: #222;
-      text-align: center;
-      padding: 2rem 1rem;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
+      background:var(--bg);
+      color:var(--dark);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.5;
     }
-    header h1 {
-      margin: 0;
-      font-size: 2.2rem;
+
+    /* Header */
+    .topbar{
+      background:linear-gradient(90deg, rgba(255,191,0,0.12), rgba(255,191,0,0.06));
+      border-bottom: 1px solid rgba(0,0,0,0.04);
+      padding:12px 6%;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
     }
-    header p {
-      font-size: 1.2rem;
-      margin-top: 0.5rem;
+    .brand{
+      display:flex; gap:12px; align-items:center;
     }
-    nav {
-      background: #333;
-      display: flex;
-      justify-content: center;
-      padding: 0.5rem;
+    .logo{
+      width:56px; height:56px; border-radius:12px;
+      background:linear-gradient(135deg,#fff,#ffe8a0); display:flex;
+      align-items:center; justify-content:center; box-shadow:0 4px 12px rgba(0,0,0,0.06);
+      font-weight:700; color:var(--dark);
     }
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin: 0 15px;
-      font-weight: 500;
+    .brand h1{margin:0;font-size:1.05rem}
+    .brand p{margin:0;font-size:0.85rem;color:var(--muted)}
+
+    nav a{color:var(--dark); text-decoration:none; font-weight:600; margin-left:18px}
+    .cta{
+      background:var(--dark); color:white; padding:10px 14px; border-radius:10px; text-decoration:none;
+      font-weight:600; box-shadow:0 6px 18px rgba(0,0,0,0.08)
     }
-    nav a:hover {
-      color: #ffcc00;
+
+    /* Hero */
+    .hero{
+      margin:1.25rem 6%;
+      border-radius:14px;
+      overflow:hidden;
+      box-shadow:0 10px 30px rgba(5,20,30,0.06);
+      position:relative;
+      min-height:320px;
     }
-    section {
-      padding: 2rem 10%;
-      background-color: white;
-      margin: 1rem auto;
-      border-radius: 12px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    .hero-slides{position:relative;height:100%;}
+    .hero-slide{
+      position:absolute; inset:0; background-size:cover; background-position:center;
+      display:flex; align-items:flex-end; padding:28px; transition:opacity .9s ease;
+      opacity:0; transform:scale(1.02);
     }
-    h2 {
-      color: #222;
-      border-left: 5px solid #ffcc00;
-      padding-left: 10px;
+    .hero-slide.show{opacity:1; transform:scale(1);}
+    .hero-overlay{
+      background:linear-gradient(0deg, rgba(6,10,13,0.6), rgba(255,255,255,0) 45%);
+      color:white; padding:20px; border-radius:10px; max-width:720px;
     }
-    .service {
-      margin-top: 1rem;
+    .hero-overlay h2{margin:0 0 8px 0; font-size:1.8rem}
+    .hero-overlay p{margin:0 0 12px 0; opacity:0.95}
+
+    /* Services */
+    .section{margin:2rem 6%}
+    .section h3{margin:0 0 12px 0; display:inline-block; border-left:6px solid var(--accent); padding-left:12px}
+    .services-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:18px; margin-top:14px;
     }
-    footer {
-      background-color: #333;
-      color: white;
-      text-align: center;
-      padding: 1rem;
-      font-size: 0.9rem;
-      margin-top: 2rem;
+    .card{
+      background:var(--card);
+      border-radius:12px; padding:14px; box-shadow:0 6px 18px rgba(10,20,30,0.04);
+      transition:transform .25s ease, box-shadow .25s ease;
     }
-    .contact {
-      line-height: 1.8;
+    .card:hover{transform:translateY(-6px); box-shadow:0 14px 36px rgba(10,20,30,0.08)}
+    .card img{width:100%; height:140px; object-fit:cover; border-radius:8px}
+    .card h4{margin:10px 0 6px 0}
+    .card p{margin:0 0 12px 0; color:var(--muted); font-size:0.95rem}
+    .card button{background:var(--accent); border:none; padding:8px 12px; border-radius:8px; font-weight:600; cursor:pointer}
+
+    /* Detail area */
+    .detail{
+      margin:2rem 6%;
+      background:linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.78));
+      border-radius:12px; padding:16px; box-shadow:0 8px 28px rgba(5,20,30,0.04);
+    }
+    .detail-grid{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:12px;
+    }
+    .detail-carousel{position:relative; border-radius:10px; overflow:hidden; min-height:220px}
+    .detail-carousel img{width:100%; height:360px; object-fit:cover; display:block; transition:opacity .4s ease}
+    .thumbs{display:flex; gap:8px; margin-top:10px; align-items:center}
+    .thumbs img{width:88px; height:56px; object-fit:cover; border-radius:8px; cursor:pointer; opacity:.85; border:2px solid transparent}
+    .thumbs img.active{border-color:var(--accent); opacity:1}
+
+    .detail-content{padding:6px 2px}
+    .detail-content h3{margin:6px 0 12px 0}
+    .detail-content p{color:var(--muted); margin:0 0 12px 0; line-height:1.6}
+
+    /* Footer */
+    footer{
+      margin-top:28px; padding:18px 6%;
+      color:var(--muted); font-size:0.92rem;
+      border-top:1px solid rgba(0,0,0,0.04)
+    }
+
+    /* Responsive tweaks */
+    @media (min-width:900px){
+      .detail-grid{grid-template-columns:1fr 420px}
+      .detail-carousel img{height:420px}
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>SRK HatchPro Solutions</h1>
-    <p>Eggs • Chicks • Hatchery Machinery Services</p>
-  </header>
 
-  <nav>
-    <a href="#home">Home</a>
-    <a href="#services">Services</a>
-    <a href="#contact">Contact</a>
-    <a href="#about">About</a>
-  </nav>
+  <!-- Top -->
+  <div class="topbar">
+    <div class="brand">
+      <div class="logo">SRK</div>
+      <div>
+        <h1>SRK HatchPro Solutions</h1>
+        <p>Eggs • Chicks • Hatchery Machinery Services</p>
+      </div>
+    </div>
 
-  <section id="home">
-    <h2>Welcome</h2>
-    <p>
-      Welcome to <strong>SRK HatchPro Solutions</strong>, your trusted partner in the poultry industry.
-      We specialize in providing <strong>hatching eggs, healthy chicks, and hatchery machinery repair and maintenance</strong> services.
-      Our goal is to deliver quality, reliability, and customer satisfaction to poultry farmers across the region.
+    <div style="display:flex;align-items:center">
+      <nav aria-label="Main nav">
+        <a href="#services">Services</a>
+        <a href="#about" style="margin-left:14px">About</a>
+        <a href="#contact" style="margin-left:14px">Contact</a>
+      </nav>
+      <a class="cta" href="#contact" style="margin-left:18px">Get a Quote</a>
+    </div>
+  </div>
+
+  <!-- HERO with dynamic slideshow (Unsplash source images) -->
+  <section class="hero" aria-label="hero">
+    <div class="hero-slides" id="heroSlides">
+      <!-- slide 1: chicks -->
+      <div class="hero-slide show" style="background-image:url('https://source.unsplash.com/1600x900/?chicks,day-old');">
+        <div class="hero-overlay" data-aos="fade-up">
+          <h2>Quality Hatching Eggs & Healthy Chicks</h2>
+          <p>Premium hatching eggs, vaccinated day-old chicks and reliable hatchery machinery services to grow your poultry business.</p>
+          <div style="margin-top:12px">
+            <a class="cta" href="#services">Our Services</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- slide 2: hatchery -->
+      <div class="hero-slide" style="background-image:url('https://source.unsplash.com/1600x900/?hatchery,incubator');">
+        <div class="hero-overlay" data-aos="fade-up" data-aos-delay="120">
+          <h2>Professional Hatchery Equipment Support</h2>
+          <p>Installation, calibration and on-site repairs — keep your hatchery running efficiently with our technical team.</p>
+        </div>
+      </div>
+
+      <!-- slide 3: machinery -->
+      <div class="hero-slide" style="background-image:url('https://source.unsplash.com/1600x900/?factory,machine,incubator');">
+        <div class="hero-overlay" data-aos="fade-up" data-aos-delay="160">
+          <h2>Custom Solutions & On-demand Repairs</h2>
+          <p>From single machines to complete hatchery setups — tailored solutions with fast response times.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" class="section" aria-labelledby="services-title">
+    <h3 id="services-title">Our Services</h3>
+    <div class="services-grid" data-aos="fade-up">
+      <!-- Card 1: Eggs -->
+      <div class="card" data-service="eggs">
+        <img src="https://source.unsplash.com/800x600/?hatching,eggs" alt="Hatching eggs">
+        <h4>Hatching Eggs Supply</h4>
+        <p>Premium-grade hatching eggs sourced and handled for maximum hatchability.</p>
+        <button onclick="openDetail('eggs')">View Details</button>
+      </div>
+
+      <!-- Card 2: Chicks -->
+      <div class="card" data-service="chicks">
+        <img src="https://source.unsplash.com/800x600/?chicks,poultry" alt="Day old chicks">
+        <h4>Chicks Supply</h4>
+        <p>Healthy, vaccinated day-old chicks suitable for broiler and layer operations.</p>
+        <button onclick="openDetail('chicks')">View Details</button>
+      </div>
+
+      <!-- Card 3: Machinery -->
+      <div class="card" data-service="machinery">
+        <img src="https://source.unsplash.com/800x600/?incubator,machinery" alt="Hatchery machinery">
+        <h4>Hatchery Machinery & Repair</h4>
+        <p>Installation, routine calibration, repairs and custom equipment solutions.</p>
+        <button onclick="openDetail('machinery')">View Details</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- DETAIL PANEL -->
+  <section class="detail" id="detailPanel" aria-live="polite">
+    <div class="detail-grid">
+      <!-- left: carousel -->
+      <div>
+        <div class="detail-carousel" id="detailCarousel">
+          <!-- large image place -->
+          <img id="detailLarge" src="https://source.unsplash.com/1600x900/?chicks,day-old" alt="detail image">
+        </div>
+
+        <!-- thumbs -->
+        <div class="thumbs" id="thumbs">
+          <!-- filled by JS -->
+        </div>
+      </div>
+
+      <!-- right: description -->
+      <aside style="padding-left:12px">
+        <div class="detail-content" id="detailContent">
+          <h3>Choose a service to view details</h3>
+          <p>Click one of the service cards above to see images on top with detailed description here.</p>
+          <ul style="color:var(--muted); margin-top:12px">
+            <li><strong>Hatching Eggs:</strong> careful selection, sanitization and secure transport to preserve hatchability.</li>
+            <li><strong>Chicks Supply:</strong> day-old chicks vaccinated and ready for brooding, available in multiple breeds.</li>
+            <li><strong>Machinery:</strong> installation, calibration and breakdown repairs for incubators, hatchers and related equipment.</li>
+          </ul>
+          <div style="margin-top:18px">
+            <a class="cta" href="#contact">Contact Us</a>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="section" data-aos="fade-up">
+    <h3>About SRK HatchPro</h3>
+    <p style="color:var(--muted); margin-top:8px">
+      SRK HatchPro Solutions supports poultry farms with high-quality inputs and reliable technical services. Our team has hands-on hatchery experience and provides tailored solutions — from egg sourcing to full hatchery machinery support.
     </p>
   </section>
 
-  <section id="services">
-    <h2>Our Services</h2>
-    <div class="service">
-      <h3>🥚 Hatching Eggs Supply</h3>
-      <p>Premium-grade hatching eggs sourced from healthy breeder flocks, ensuring high hatchability and quality.</p>
-    </div>
+  <!-- CONTACT -->
+  <section id="contact" class="section" data-aos="fade-up">
+    <h3>Contact</h3>
+    <div style="display:flex; gap:18px; flex-wrap:wrap; margin-top:14px">
+      <div style="flex:1; min-width:240px; background:var(--card); padding:14px; border-radius:10px; box-shadow:0 8px 28px rgba(2,16,30,0.03)">
+        <h4>Get in Touch</h4>
+        <p style="color:var(--muted)">Address: [Your Town/City, Telangana, India]</p>
+        <p style="color:var(--muted)">Phone: +91-XXXXXXXXXX</p>
+        <p style="color:var(--muted)">Email: <a href="mailto:srkhatchpro@gmail.com">srkhatchpro@gmail.com</a></p>
+      </div>
 
-    <div class="service">
-      <h3>🐥 Chicks Supply</h3>
-      <p>Day-old chicks that are healthy, active, and vaccinated. Suitable for both broiler and layer production.</p>
-    </div>
-
-    <div class="service">
-      <h3>⚙️ Hatchery Machinery & Equipment Services</h3>
-      <p>
-        We handle incubator and hatchery equipment installation, repair, and maintenance. Custom setups and regular inspections
-        are available as per client needs.
-      </p>
-    </div>
-  </section>
-
-  <section id="about">
-    <h2>About Us</h2>
-    <p>
-      At SRK HatchPro Solutions, we are committed to supporting poultry farms with quality products and dependable service.
-      With years of experience in hatchery operations, our team understands every aspect of poultry production — from eggs to equipment.
-    </p>
-  </section>
-
-  <section id="contact">
-    <h2>Contact Us</h2>
-    <div class="contact">
-      <p><strong>Address:</strong> [Your Town/City, Telangana, India]</p>
-      <p><strong>Phone:</strong> +91-XXXXXXXXXX</p>
-      <p><strong>Email:</strong> srkhatchpro@gmail.com</p>
-      <p><strong>Website:</strong> www.srkhatchpro.com</p>
+      <div style="flex:1; min-width:260px; background:linear-gradient(180deg,#fff,#fffaf0); padding:14px; border-radius:10px; box-shadow:0 8px 28px rgba(2,16,30,0.03)">
+        <h4>Request Quote</h4>
+        <form onsubmit="event.preventDefault(); alert('Request sent! We will contact you soon.');" style="display:flex;flex-direction:column;gap:8px">
+          <input placeholder="Name" required style="padding:10px;border-radius:8px;border:1px solid #eee">
+          <input placeholder="Phone or WhatsApp" required style="padding:10px;border-radius:8px;border:1px solid #eee">
+          <textarea placeholder="Message / Requirements" rows="3" style="padding:10px;border-radius:8px;border:1px solid #eee"></textarea>
+          <button class="cta" type="submit" style="border:none;margin-top:6px">Send Request</button>
+        </form>
+      </div>
     </div>
   </section>
 
   <footer>
-    &copy; 2025 SRK HatchPro Solutions. All Rights Reserved.
+    &copy; <span id="year"></span> SRK HatchPro Solutions • Eggs • Chicks • Hatchery Machinery Services — All rights reserved.
   </footer>
+
+  <!-- AOS script -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+  <script>
+    // plain helper
+    const $ = (sel) => document.querySelector(sel);
+    const $$ = (sel) => Array.from(document.querySelectorAll(sel));
+
+    // Hero slideshow
+    (function heroSlider(){
+      const slides = $$('.hero-slide');
+      let idx = 0;
+      setInterval(()=>{
+        slides[idx].classList.remove('show');
+        idx = (idx+1) % slides.length;
+        slides[idx].classList.add('show');
+      }, 4500);
+    })();
+
+    // Detail content for each service
+    const details = {
+      eggs: {
+        title: 'Hatching Eggs Supply',
+        description: `Premium-grade hatching eggs sourced from healthy breeder flocks. We follow strict handling and transport standards to ensure maximum hatchability and farm biosecurity.`,
+        images: [
+          'https://source.unsplash.com/1200x800/?hatching,eggs',
+          'https://source.unsplash.com/1200x800/?egg,tray,hatchery',
+          'https://source.unsplash.com/1200x800/?egg,packing'
+        ]
+      },
+      chicks: {
+        title: 'Chicks Supply',
+        description: `Healthy, vaccinated day-old chicks available in broiler and layer breeds. We ensure careful transport and starter advice for optimal early chick performance.`,
+        images: [
+          'https://source.unsplash.com/1200x800/?chicks,poultry',
+          'https://source.unsplash.com/1200x800/?day-old,chicks',
+          'https://source.unsplash.com/1200x800/?chick,brooder'
+        ]
+      },
+      machinery: {
+        title: 'Hatchery Machinery & Repair',
+        description: `Incubator and hatchery machinery installation, calibration and prompt repairs. We provide both preventive maintenance and on-demand fixes for hatchery equipment.`,
+        images: [
+          'https://source.unsplash.com/1200x800/?incubator,machine',
+          'https://source.unsplash.com/1200x800/?factory,machinery',
+          'https://source.unsplash.com/1200x800/?maintenance,repair'
+        ]
+      }
+    };
+
+    // Open detail and populate carousel + description
+    function openDetail(key){
+      const d = details[key];
+      if(!d) return;
+      const large = $('#detailLarge');
+      const thumbs = $('#thumbs');
+      const content = $('#detailContent');
+
+      // set large & thumbs
+      large.src = d.images[0];
+      thumbs.innerHTML = '';
+      d.images.forEach((src,i)=>{
+        const t = document.createElement('img');
+        t.src = src;
+        t.alt = d.title + ' image '+(i+1);
+        if(i===0) t.classList.add('active');
+        t.addEventListener('click', ()=> {
+          $('#detailLarge').style.opacity = 0;
+          setTimeout(()=>{ $('#detailLarge').src = src; $('#detailLarge').style.opacity = 1; }, 160);
+          $$('#thumbs img').forEach(x => x.classList.remove('active'));
+          t.classList.add('active');
+        });
+        thumbs.appendChild(t);
+      });
+
+      // content
+      content.innerHTML = `
+        <h3>${d.title}</h3>
+        <p style="color:var(--muted)">${d.description}</p>
+        <p style="color:var(--muted);font-size:0.95rem"><strong>What we offer:</strong></p>
+        <ul style="color:var(--muted); margin-top:8px">
+          <li>Quality assurance and selection</li>
+          <li>Secure transport & documentation</li>
+          <li>After-sales support and farm advisory</li>
+        </ul>
+        <div style="margin-top:16px"><a class="cta" href="#contact">Request this service</a></div>
+      `;
+
+      // Scroll into view smoothly
+      document.getElementById('detailPanel').scrollIntoView({behavior:'smooth', block:'start'});
+      // small AOS refresh to animate
+      AOS.refresh();
+    }
+
+    // Set current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Init AOS
+    AOS.init({duration:700, once:true, offset:80});
+  </script>
 </body>
 </html>
