@@ -30,10 +30,7 @@
       padding:12px 6%; display:flex; justify-content:space-between; align-items:center;
     }
     .brand {display:flex; gap:12px; align-items:center;}
-    .logo {
-      width:50px; height:50px; border-radius:12px; background:linear-gradient(135deg,#fff,#ffe8a0);
-      display:flex; align-items:center; justify-content:center; font-weight:700;
-    }
+    .logo img {width:50px; height:50px; border-radius:12px;}
     .brand h1 {margin:0;font-size:1.1rem}
     .brand p {margin:0;font-size:0.85rem;color:var(--muted)}
     nav a {margin-left:18px; text-decoration:none; color:var(--dark); font-weight:600}
@@ -88,13 +85,17 @@
     .thumbs img.active{border:2px solid var(--accent); opacity:1;}
 
     footer{margin-top:24px; padding:18px 6%; border-top:1px solid #eee; color:var(--muted);}
+    input,textarea{width:100%; padding:10px; border-radius:8px; border:1px solid #ddd; margin-bottom:10px;}
+    button.cta{cursor:pointer;}
   </style>
 </head>
 <body>
 
   <div class="topbar">
     <div class="brand">
-      <div class="logo">SRK</div>
+      <div class="logo">
+        <img src="logo.png" alt="SRK HatchPro Logo">
+      </div>
       <div>
         <h1>SRK HatchPro Solutions</h1>
         <p>Eggs • Chicks • Hatchery Machinery Services</p>
@@ -107,24 +108,30 @@
     </nav>
   </div>
 
-  <!-- Hero with fixed images -->
+  <!-- Hero with local images -->
   <section class="hero" id="hero">
-    <div class="hero-slide show" style="background-image:url('https://images.unsplash.com/photo-1608032361375-457bb6a7a4c8?auto=format&fit=crop&w=1600&q=80');">
+    <div class="hero-slide show" style="background-image:url('chicks.jpg');">
       <div class="hero-overlay">
         <h2>Quality Hatching Eggs & Healthy Chicks</h2>
         <p>Premium hatching eggs, vaccinated chicks, and professional hatchery machinery services.</p>
       </div>
     </div>
-    <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1560807707-8cc77767d783?auto=format&fit=crop&w=1600&q=80');">
+    <div class="hero-slide" style="background-image:url('hatchery.jpg');">
       <div class="hero-overlay">
         <h2>Reliable Hatchery Equipment Services</h2>
-        <p>Expert repair and maintenance for hatchery incubators and automation machinery.</p>
+        <p>Expert repair and maintenance for hatchery incubators and automation machinery.We will provide solutions for the production improvements</p>
       </div>
     </div>
-    <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1601983765038-76ce23e2b5a8?auto=format&fit=crop&w=1600&q=80');">
+    <div class="hero-slide" style="background-image:url('machine.jpg');">
       <div class="hero-overlay">
         <h2>Trusted Poultry Partners</h2>
-        <p>Supplying quality chicks and hatchery solutions across Ap & Telangana.</p>
+        <p>Supplying quality chicks and hatchery solutions across India.</p>
+      </div>
+    </div>
+    <div class="hero-slide" style="background-image:url('hatchery.jpg');">
+      <div class="hero-overlay">
+        <h2>Hatchery production improvements and Vaccination for chicks </h2>
+        <p>We will provide solutions for the production improvements and we will provide persons for vaccination on demand</p>
       </div>
     </div>
   </section>
@@ -134,27 +141,27 @@
     <h3>Our Services</h3>
     <div class="services-grid">
       <div class="card" onclick="openDetail('eggs')">
-        <img src="https://images.unsplash.com/photo-1608032361375-457bb6a7a4c8?auto=format&fit=crop&w=800&q=80" alt="Hatching eggs">
+        <img src="eggs.jpg" alt="Hatching eggs">
         <h4>Hatching Eggs Supply</h4>
         <p>Premium hatching eggs with excellent fertility and hatchability rates.</p>
       </div>
       <div class="card" onclick="openDetail('chicks')">
-        <img src="https://images.unsplash.com/photo-1578301978069-490db8f9b548?auto=format&fit=crop&w=800&q=80" alt="Chicks">
+        <img src="chicks.jpg" alt="Chicks">
         <h4>Chicks Supply</h4>
         <p>Healthy, vaccinated day-old chicks delivered with care and biosecurity.</p>
       </div>
-      <div class="card" onclick="openDetail('machinery')">
-        <img src="https://images.unsplash.com/photo-1617084209466-7c4c4e74e1c8?auto=format&fit=crop&w=800&q=80" alt="Machinery">
+      <div class="card" onclick="openDetail('machine')">
+        <img src="machine.jpg" alt="Machinery">
         <h4>Hatchery Machinery & Repairs</h4>
-        <p>Expert repair, calibration, and installation of hatchery equipment and also help in hatchery production improvement</p>
+        <p>Expert repair, calibration, and installation of hatchery equipment.</p>
       </div>
     </div>
   </section>
 
-  <!-- Details -->
+  <!-- Detail -->
   <section id="detail" class="detail">
     <div id="detailCarousel" class="detail-carousel">
-      <img id="detailImg" src="https://images.unsplash.com/photo-1578301978069-490db8f9b548?auto=format&fit=crop&w=1200&q=80" alt="">
+      <img id="detailImg" src="chicks.jpg" alt="">
     </div>
     <div class="thumbs" id="thumbs"></div>
     <div id="detailText" style="margin-top:10px;">
@@ -166,81 +173,23 @@
   <!-- About -->
   <section id="about" class="section">
     <h3>About SRK HatchPro</h3>
-    <p>SRK HatchPro Solutions provides poultry farmers with trusted quality and technical expertise — from hatching egg supply to machinery maintenance. We deliver dependable services and high-performing chicks to boost your poultry productivity. We also provide the solutions to improve the hatchery production to get better results</p>
+    <p>SRK HatchPro Solutions provides poultry farmers with trusted quality and technical expertise — from hatching egg supply to machinery maintenance. We deliver dependable services and high-performing chicks to boost your poultry productivity.</p>
   </section>
 
   <!-- Contact -->
   <section id="contact" class="section">
-    <h3>Contact</h3>
-    <p>Email: <a href="mailto:srkhatchpro@gmail.com">srkhatchpro@gmail.com</a></p>
-    <p>Location: visakhapatnam, AP</p>
+    <h3>Contact / Request Quote</h3>
+    <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <input type="text" name="name" placeholder="Name" required>
+      <input type="email" name="email" placeholder="Email or WhatsApp" required>
+      <textarea name="message" placeholder="Message / Requirements" required></textarea>
+      <button type="submit" class="cta">Send Request</button>
+    </form>
+    <p style="margin-top:10px;color:var(--muted)">Email: srkhatchpro@gmail.com | Phone: +91-XXXXXXXXXX | Telangana, India</p>
   </section>
 
   <footer>
     &copy; <span id="year"></span> SRK HatchPro Solutions — All rights reserved.
   </footer>
 
-  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-  <script>
-    AOS.init({duration:700,once:true});
-    document.getElementById("year").textContent = new Date().getFullYear();
-
-    // Hero slideshow
-    const slides = document.querySelectorAll(".hero-slide");
-    let i=0;
-    setInterval(()=>{
-      slides[i].classList.remove("show");
-      i=(i+1)%slides.length;
-      slides[i].classList.add("show");
-    },4000);
-
-    // Detail section images
-    const services = {
-      eggs: {
-        title:"Hatching Eggs Supply",
-        desc:"Premium-grade hatching eggs handled with the highest care for maximum hatchability. Clean, disinfected and packed for safe delivery.",
-        images:[
-          "https://images.unsplash.com/photo-1608032361375-457bb6a7a4c8?auto=format&fit=crop&w=1200&q=80",
-          "https://images.unsplash.com/photo-1583182332515-44d2a88ed1c5?auto=format&fit=crop&w=1200&q=80",
-          "https://images.unsplash.com/photo-1592194996308-7b43878e84a6?auto=format&fit=crop&w=1200&q=80"
-        ]
-      },
-      chicks: {
-        title:"Chicks Supply",
-        desc:"Day-old chicks raised under optimal conditions. Delivered vaccinated and ready for healthy flock growth.",
-        images:[
-          "https://images.unsplash.com/photo-1578301978069-490db8f9b548?auto=format&fit=crop&w=1200&q=80",
-          "https://images.unsplash.com/photo-1606813903994-41e0cf79951f?auto=format&fit=crop&w=1200&q=80",
-          "https://images.unsplash.com/photo-1615225047920-52d2e8ec6f73?auto=format&fit=crop&w=1200&q=80"
-        ]
-      },
-      machinery: {
-        title:"Hatchery Machinery & Repairs",
-        desc:"From incubator installation to electrical repairs, we offer full hatchery equipment support with expert technicians.",
-        images:[
-          "https://images.unsplash.com/photo-1617084209466-7c4c4e74e1c8?auto=format&fit=crop&w=1200&q=80",
-          "https://images.unsplash.com/photo-1598550874170-d54e73f4e5d4?auto=format&fit=crop&w=1200&q=80",
-          "https://images.unsplash.com/photo-1576678927484-cc907957088e?auto=format&fit=crop&w=1200&q=80"
-        ]
-      }
-    };
-
-    function openDetail(key){
-      const d = services[key];
-      const detailImg = document.getElementById("detailImg");
-      const thumbs = document.getElementById("thumbs");
-      const detailText = document.getElementById("detailText");
-      detailImg.src = d.images[0];
-      thumbs.innerHTML="";
-      d.images.forEach((src,idx)=>{
-        const t=document.createElement("img");
-        t.src=src; if(idx===0)t.classList.add("active");
-        t.onclick=()=>{document.querySelectorAll(".thumbs img").forEach(x=>x.classList.remove("active")); t.classList.add("active"); detailImg.src=src;}
-        thumbs.appendChild(t);
-      });
-      detailText.innerHTML=`<h3>${d.title}</h3><p>${d.desc}</p>`;
-      document.getElementById("detail").scrollIntoView({behavior:"smooth"});
-    }
-  </script>
-</body>
-</html>
+  <script src="
