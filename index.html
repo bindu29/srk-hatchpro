@@ -5,8 +5,9 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>SRK HatchPro — Eggs, Chicks & Hatchery Machinery</title>
 
-  <!-- Google Font -->
+    <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
 
   <!-- AOS for scroll animations -->
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
@@ -26,16 +27,48 @@
     }
 
     .topbar {
-      background:linear-gradient(90deg, rgba(255,191,0,0.15), rgba(255,191,0,0.05));
-      padding:12px 6%; display:flex; justify-content:space-between; align-items:center;
+      background:linear-gradient(90deg, #FFEB3B, #FFD700); /* chick yellow */
+      padding:12px 6%; display:flex; justify-content:space-between; align-items:center;flex-wrap:wrap;
     }
-    .brand {display:flex; gap:12px; align-items:center;}
-    .logo img {width:50px; height:50px; border-radius:12px;}
-    .brand h1 {margin:0;font-size:1.1rem}
-    .brand p {margin:0;font-size:0.85rem;color:var(--muted)}
-    nav a {margin-left:18px; text-decoration:none; color:var(--dark); font-weight:600}
-    .cta {background:var(--dark); color:#fff; padding:10px 14px; border-radius:10px; text-decoration:none; font-weight:600;}
+    .brand {display:flex; gap:15px; align-items:center;flex-wrap:wrap;
+      text-align:center;
+      width:100%;
+      justify-content:center;}
+    .logo img {width:120px; height:120px; border-radius:18px;}
+    .brand h1 {margin:0;font-size:2.5rem; /* bigger heading */
+      font-weight:800;
+      color:#2d3436;
+      text-transform:uppercase;
+      letter-spacing:1.5px;}
+    .brand p {margin:5px 0 0 0;
+      font-size:1rem;
+      color:var(--dark);}
+    /* --- Vertical Navigation --- */
+    nav {
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:10px;
+      margin-top:15px;
+      width:100%;
+    }
 
+    nav a {
+      text-decoration:none; 
+      color:#2d3436; 
+      font-weight:700;
+      font-size:1.2rem;
+      background:#fff6cc;
+      border-radius:8px;
+      padding:8px 18px;
+      box-shadow:0 2px 8px rgba(0,0,0,0.1);
+      transition:background .3s, transform .3s;
+    }
+
+    nav a:hover {
+      background:#FFD700;
+      transform:scale(1.05);
+    }
     /* Hero */
     .hero {
       margin:1.25rem 6%;
@@ -86,7 +119,12 @@
 
     footer{margin-top:24px; padding:18px 6%; border-top:1px solid #eee; color:var(--muted);}
     input,textarea{width:100%; padding:10px; border-radius:8px; border:1px solid #ddd; margin-bottom:10px;}
-    button.cta{cursor:pointer;}
+    button.cta{cursor:pointer;background:var(--dark);
+      color:white;
+      border:none;
+      padding:10px 18px;
+      border-radius:10px;
+      font-weight:600;}
   </style>
 </head>
 <body>
